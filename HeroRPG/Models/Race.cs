@@ -14,7 +14,7 @@ namespace HeroRPG.Models
         public int DexterityModifier { get; set; }
         public int ConstitutionModifier { get; set; }
 
-        public virtual ICollection<Hero> Heros { get; set; } = new HashSet<Hero>();
+        public virtual ICollection<Hero> Heroes { get; set; } = new HashSet<Hero>();
 
     }
 }

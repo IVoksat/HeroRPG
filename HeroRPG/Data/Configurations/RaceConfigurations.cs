@@ -8,7 +8,7 @@ namespace HeroRPG.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Race> builder)
         {
-            builder.HasMany(r => r.Heros)
+            builder.HasMany(r => r.Heroes)
                    .WithOne(ra => ra.Race)
                    .HasForeignKey(ra => ra.RaceID)
                    .OnDelete(DeleteBehavior.Restrict);
