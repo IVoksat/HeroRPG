@@ -1,6 +1,7 @@
 ﻿using HeroRPG.Data;
 using HeroRPG.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HeroRPG.Controllers
 {
@@ -12,12 +13,12 @@ namespace HeroRPG.Controllers
             this.heroRPG_Db = heroRPG_Db;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            HashSet<Hero> heroes = heroRPG_Db.Heroes
-                .ToHashSet();
-
-            return View(heroes);
+            return View(await heroRPG_Db
+                .Heroes
+                .Include(h => h.Race)
+                .ToListAsync());
         }
     }
 }
