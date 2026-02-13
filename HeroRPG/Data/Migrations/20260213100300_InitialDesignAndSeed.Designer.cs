@@ -3,6 +3,7 @@ using HeroRPG.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HeroRPG.Data.Migrations
 {
     [DbContext(typeof(HeroRPG_DbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260213100300_InitialDesignAndSeed")]
+    partial class InitialDesignAndSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -211,7 +214,7 @@ namespace HeroRPG.Data.Migrations
             modelBuilder.Entity("HeroRPG.Models.Hero", b =>
                 {
                     b.HasOne("HeroRPG.Models.Race", "Race")
-                        .WithMany("Heros")
+                        .WithMany("Heroes")
                         .HasForeignKey("RaceID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -221,7 +224,7 @@ namespace HeroRPG.Data.Migrations
 
             modelBuilder.Entity("HeroRPG.Models.Race", b =>
                 {
-                    b.Navigation("Heros");
+                    b.Navigation("Heroes");
                 });
 #pragma warning restore 612, 618
         }

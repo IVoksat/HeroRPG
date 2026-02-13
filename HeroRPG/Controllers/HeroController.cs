@@ -13,7 +13,9 @@ namespace HeroRPG.Controllers
             this.heroRPG_Db = heroRPG_Db;
         }
 
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        
+        public async Task<IActionResult> AllHeroes()
         {
             return View(await heroRPG_Db
                 .Heroes
