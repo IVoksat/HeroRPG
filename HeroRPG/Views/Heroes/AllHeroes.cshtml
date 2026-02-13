@@ -1,0 +1,76 @@
+﻿@model IEnumerable<HeroRPG.ViewModels.HeroViewModel>
+
+@{
+    ViewData["Title"] = "All Characters";
+}
+
+<h2>All Characters</h2>
+
+<p>
+    <a asp-action="Create">Hire new hero</a>
+</p>
+<div class="table-wrap">
+    <table class="sortable">
+        <thead>
+            <tr>
+                <th aria-sort="ascending">
+                    <button>
+                        Name
+                        <span aria-hidden="true"></span>
+                    </button>
+                </th>
+                <th class="num">
+                    <button>
+                        Strength
+                        <span aria-hidden="true"></span>
+                    </button>
+                    </>
+                <th class="num">
+                    <button>
+                        Constitution
+                        <span aria-hidden="true"></span>
+                    </button>
+                </th>
+                <th class="num">
+                    <button>
+                        Dexterity
+                        <span aria-hidden="true"></span>
+                    </button>
+                </th>
+                <th aria-sort="ascending">
+                    <button>
+                        Race Name
+                        <span aria-hidden="true"></span>
+                    </button>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>
+                        @item.Name
+                    </th>
+                    <th>
+                        @item.Strength
+                    </th>
+                    <th>
+                        @item.Constitution
+                    </th>
+                    <th>
+                        @item.Dexterity
+                    </th>
+                    <th>
+                        @item.RaceName
+                    </th>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

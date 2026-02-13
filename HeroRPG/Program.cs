@@ -1,4 +1,6 @@
 using HeroRPG.Data;
+using HeroRPG.Models;
+using HeroRPG.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,8 +16,14 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<HeroRPG_DbContext>();
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddAutoMapper(config =>
+{
+    config.CreateMap<Hero, HeroViewModel>();
+    config.CreateMap<HeroViewModel, Hero>();
+});
+
 WebApplication app = builder.Build();
-    
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

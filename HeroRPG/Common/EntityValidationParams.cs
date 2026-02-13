@@ -9,6 +9,7 @@
         }
         public class HeroRaceValidation
         {
+            public const int RaceNameMinLength = 2;
             public const int RaceNameMaxLength = 30;
         }
     }
