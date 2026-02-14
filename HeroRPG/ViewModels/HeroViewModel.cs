@@ -9,8 +9,11 @@ namespace HeroRPG.ViewModels
         public int Id { get; set; }
         [MaxLength(HeroNameMaxLength)]
         public string Name { get; set; } = null!;
+        [Required]
         public int Strength { get; set; }
+        [Required]
         public int Constitution { get; set; }
+        [Required]
         public int Dexterity { get; set; }
         [MaxLength(HeroDescriptionMaxLength)]
         public string? Description { get; set; }
