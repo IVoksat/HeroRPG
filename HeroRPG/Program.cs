@@ -8,18 +8,20 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 string connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-builder.Services.AddDbContext<HeroRPG_DbContext>(options =>
+builder.Services.AddDbContext<HeroRpgDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<HeroRPG_DbContext>();
+    .AddEntityFrameworkStores<HeroRpgDbContext>();
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddAutoMapper(config =>
 {
     config.CreateMap<Hero, HeroViewModel>();
     config.CreateMap<HeroViewModel, Hero>();
+    config.CreateMap<Race, SelectRaceViewModel>();
+    config.CreateMap<SelectRaceViewModel, Race>();
 });
 
 WebApplication app = builder.Build();

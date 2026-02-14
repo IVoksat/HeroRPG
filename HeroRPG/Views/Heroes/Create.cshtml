@@ -1,0 +1,46 @@
+﻿@model HeroRPG.ViewModels.CreateNewHeroForm
+@{
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form action="/submit" method="post">
+            <label for="Name">Name:</label>
+            <input type="text" id="Name" name="name" required>
+            <br><br>
+
+            <label for="Strength">Strength:</label>
+            <input type="number" id="Strength" name="Strength" required>
+            <br><br>
+            <label for="Constitution">Constitution:</label>
+            <input type="number" id="Constitution" name="Constitution" required>
+            <br><br>
+            <label for="Dexterity">Dexterity:</label>
+            <input type="number" id="Dexterity" name="Dexterity" required>
+            <br><br>
+            <label for="Description">Description:</label>
+            <input type="text" id="Description" name="Description">
+            <br><br>
+            <div class="mb-3">
+                <label asp-for="@Model.Id" class="form-label-add-edit">Race</label>
+                <select asp-for="@Model.Id" class="form-control" aria-required="true">
+                    <option value="">-- Select a Race --</option>
+                    @foreach (var race in Model.RaceName)
+                    {
+                        <option value="@race.Id">@race.Name</option>
+                    }
+                </select>
+            </div>
+
+
+            <!-- Radio buttons for gender -->
+            <label>Gender:</label>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+            <br>
+            <br>
+
+            <!-- Submit button -->
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+}
