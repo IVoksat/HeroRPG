@@ -9,10 +9,10 @@ namespace HeroRPG.Controllers
 {
     public class HeroesController : Controller
     {
-        private readonly HeroRPG_DbContext heroRPG_Db;
+        private readonly HeroRpgDbContext heroRPG_Db;
         private readonly IMapper mapper;
 
-        public HeroesController(HeroRPG_DbContext heroRPG_Db, IMapper mapper)
+        public HeroesController(HeroRpgDbContext heroRPG_Db, IMapper mapper)
         {
             this.heroRPG_Db = heroRPG_Db;
             this.mapper = mapper;
@@ -20,23 +20,27 @@ namespace HeroRPG.Controllers
 
         [HttpGet]
 
-        public async Task<IActionResult> AllHeroes()
+        public IActionResult AllHeroes()
         {
-            IEnumerable<HeroViewModel> heroes = this.mapper.ProjectTo<HeroViewModel> (heroRPG_Db
+            IEnumerable<HeroViewModel> heroes = this.mapper.ProjectTo<HeroViewModel>(heroRPG_Db
                 .Heroes
                 .Include(h => h.Race));
 
             return View(heroes);
         }
+        [HttpGet]
+        public IActionResult Create()
+        {        
+            CreateNewHeroForm newHeroForm = new()
+            {
+                RaceName = GetAllRaces()
+            };
+            return View(newHeroForm);
+        }
+
+        private IEnumerable<SelectRaceViewModel> GetAllRaces()
+        {
+            return mapper.ProjectTo<SelectRaceViewModel>(heroRPG_Db.Races);
+        }
     }
 }
-//Select(h => new HeroViewModel
-                //{
-                //    Id = h.Id,
-                //    Name = h.Name,
-                //    RaceName = h.Race.Name,
-                //    Strength = h.Strength,
-                //    Constitution = h.Constitution,
-                //    Dexterity = h.Dexterity,
-                //    Description = h.Description ?? string.Empty
-                //})

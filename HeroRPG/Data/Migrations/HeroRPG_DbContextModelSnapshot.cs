@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HeroRPG.Data.Migrations
 {
-    [DbContext(typeof(HeroRPG_DbContext))]
-    partial class HeroRPG_DbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(HeroRpgDbContext))]
+    partial class HeroRpgDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

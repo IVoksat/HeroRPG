@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HeroRPG.Data.Migrations
 {
-    [DbContext(typeof(HeroRPG_DbContext))]
+    [DbContext(typeof(HeroRpgDbContext))]
     [Migration("20260213100300_InitialDesignAndSeed")]
     partial class InitialDesignAndSeed
     {

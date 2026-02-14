@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HeroRPG.Data.Migrations
 {
-    [DbContext(typeof(HeroRPG_DbContext))]
+    [DbContext(typeof(HeroRpgDbContext))]
     [Migration("20260213102439_CorrectingIdentityConfig")]
     partial class CorrectingIdentityConfig
     {

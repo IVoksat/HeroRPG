@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HeroRPG.Data.Migrations
 {
-    [DbContext(typeof(HeroRPG_DbContext))]
+    [DbContext(typeof(HeroRpgDbContext))]
     [Migration("00000000000000_CreateIdentitySchema")]
     partial class CreateIdentitySchema
     {

@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HeroRPG.Data
 {
-    public class HeroRPG_DbContext : DbContext
+    public class HeroRpgDbContext : DbContext
     {
-        public HeroRPG_DbContext(DbContextOptions<HeroRPG_DbContext> dbContextOptions) : base(dbContextOptions)
+        public HeroRpgDbContext(DbContextOptions<HeroRpgDbContext> dbContextOptions) : base(dbContextOptions)
         {
         }
 
@@ -18,7 +18,7 @@ namespace HeroRPG.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(HeroRPG_DbContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(HeroRpgDbContext).Assembly);
         }
     }
 }
